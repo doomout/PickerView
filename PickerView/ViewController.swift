@@ -46,8 +46,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     //titleForRow 인수를 가지는 델리게이트 메서드, 피커 뷰에게 컴포넌트의 각 열의 타이틀을 문자열(imageFileName에 저장되어 있는 파일명) 값으로 넘겨준다.
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return imageFileName[row]
+    //func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    //    return imageFileName[row]
+    //}
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let imageView = UIImageView(image:imageArray[row])
+        imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 150)
+        
+        return imageView
     }
     
     //사용자가 피커 뷰의 룰렛에서 선택한 row값을 사용하여 imageFileName 배열의 row값에 해당하는 문자열을 가져온다.
